@@ -19,8 +19,13 @@ function App() {
   };
 
   const handlePause = () => {
-    setIsPause(true);
-    setIsRunning(false);
+    if(!isPause){
+      setIsPause(true);
+      setIsRunning(false);
+    }else{
+      setIsPause(false);
+      setIsRunning(true);
+    }
   };
 
   const handleRestart = () => {
@@ -51,9 +56,9 @@ function App() {
     <div>
       <p>{count}</p>
       <div style={{ display: 'flex', gap: '0.5rem' }}>
-        <button onClick={handleStart}>{isPause ? 'Resume' : 'Start'}</button>
+        <button onClick={handleStart}> Start</button>
         <button onClick={handleStop}>Stop</button>
-        <button onClick={handlePause}>Pause</button>
+        <button onClick={handlePause}>{isPause ? 'Resume' : 'Pause'}</button>
         <button onClick={handleRestart}>Restart</button>
       </div>
     </div>
